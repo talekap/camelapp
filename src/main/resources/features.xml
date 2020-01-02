@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<features name="started featuring">
+
+    <feature name="helloworld-feature">
+        <bundle>bundle install helloworld-webservice</bundle>
+    </feature>
+
+    <feature name="helloworld-webservice">
+        <bundle>mvn:com.camel.app/camelapp/${project.version}</bundle>
+    </feature>
+</features>
