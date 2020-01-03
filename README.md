@@ -1,9 +1,9 @@
 # camelapp
 mvn clean install
 
-Run JBoss-fuse in standalone mode
+Run JBoss-fuse-6.2.0 in standalone mode
 
-On JBoss-fuse terminal, install bundle using below command:
+On JBoss-fuse terminal, install bundle using command:
 install -s mvn:com.camel.app/camelapp/1.0-SNAPSHOT
 
 check status of bundle:
