@@ -8,6 +8,8 @@ Apache Maven - version 3.6.0
 
 Java 1.8
 
+JBoss-fuse-6.2.0 
+
 IntelliJ IDEA
 
 Postman
