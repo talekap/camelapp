@@ -1,6 +1,9 @@
 package com.camel.app.webservice.customer;
 
-public class OrderStatus {
+/**
+ * Response POJO class
+ */
+public class OrderResponse {
     private String status;
     private String country;
 

@@ -29,6 +29,8 @@
     <camelContext xmlns="http://camel.apache.org/schema/blueprint">
         <routeBuilder ref="restServiceRouteBuilder"/>
         <routeBuilder ref="customerOrderRouteBuilder"/>
+        <routeBuilder ref="countryFilterRouteBuilder"/>
+        <routeBuilder ref="countryRouteBuilder"/>
     </camelContext>
 
     <!-- CXF servers -->
@@ -59,10 +61,23 @@
     </bean>
 
     <!-- customer-->
+
+    <bean id="ukOrderProcessor" class="com.camel.app.webservice.processor.UkOrderProcessor"/>
+    <bean id="usaOrderProcessor" class="com.camel.app.webservice.processor.UsaOrderProcessor"/>
+    <bean id="defaultOrderProcessor" class="com.camel.app.webservice.processor.DefaultOrderProcessor"/>
+
     <bean id="customerOrderService" class="com.camel.app.webservice.customer.CustomerOrderService"/>
 
-    <bean id="customerOrderRouteBuilder" class="com.camel.app.webservice.customer.CustomerOrderRouteBuilder">
+    <bean id="customerOrderRouteBuilder" class="com.camel.app.webservice.CustomerOrderRouteBuilder">
         <property name="customerOrderRestEndpoint" value="${customerOrderRestEndpoint}"/>
+    </bean>
+
+    <bean id="countryFilterRouteBuilder" class="com.camel.app.webservice.route.CountryFilterRouteBuilder"/>
+
+    <bean id="countryRouteBuilder" class="com.camel.app.webservice.route.CountryRouteBuilder">
+        <property name="ukOrderProcessor" ref="ukOrderProcessor"/>
+        <property name="usaOrderProcessor" ref="usaOrderProcessor"/>
+        <property name="defaultOrderProcessor" ref="defaultOrderProcessor"/>
     </bean>
 
 </blueprint>
