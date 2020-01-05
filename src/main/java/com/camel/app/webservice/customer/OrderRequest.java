@@ -1,6 +1,9 @@
 package com.camel.app.webservice.customer;
 
-public class Order {
+/**
+ * Request POJO class
+ */
+public class OrderRequest {
     private String name;
     private String number;
     private String country;

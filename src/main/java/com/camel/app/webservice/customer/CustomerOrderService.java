@@ -20,7 +20,7 @@ public class CustomerOrderService {
     @Path("/placeorder")
     @Consumes({MediaType.APPLICATION_JSON})
     @Produces(MediaType.APPLICATION_JSON)
-    public OrderStatus placeOrder(Order order) {
+    public OrderResponse placeOrder(OrderRequest orderRequest) {
         logger.debug("- CustomerOrderService -");
         return null;
     }
