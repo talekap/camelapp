@@ -5,7 +5,8 @@
         <bundle>bundle install helloworld-webservice</bundle>
     </feature>
 
-    <feature name="helloworld-webservice">
+    <feature name="poc-webservice">
         <bundle>mvn:com.camel.app/camelapp/${project.version}</bundle>
     </feature>
+
 </features>

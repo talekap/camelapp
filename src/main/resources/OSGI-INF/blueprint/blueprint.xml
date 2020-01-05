@@ -18,13 +18,17 @@
             <!-- Endpoints -->
             <cm:property name="restEndpoint"
                          value="cxfrs:bean:helloServiceServer?bindingStyle=SimpleConsumer"/>
+            <cm:property name="customerOrderRestEndpoint"
+                         value="cxfrs:bean:customerOrderServiceServer?bindingStyle=SimpleConsumer"/>
             <!-- Service URL -->
             <cm:property name="api.root.url" value="/poc"/>
+            <cm:property name="customerOrder.url" value="/customerpoc"/>
         </cm:default-properties>
     </cm:property-placeholder>
 
     <camelContext xmlns="http://camel.apache.org/schema/blueprint">
         <routeBuilder ref="restServiceRouteBuilder"/>
+        <routeBuilder ref="customerOrderRouteBuilder"/>
     </camelContext>
 
     <!-- CXF servers -->
@@ -37,12 +41,28 @@
             <bean class="com.fasterxml.jackson.jaxrs.json.JacksonJsonProvider"/>
         </camel-cxf:providers>
     </camel-cxf:rsServer>
+    <camel-cxf:rsServer id="customerOrderServiceServer" address="${customerOrder.url}"
+                        loggingFeatureEnabled="false">
+        <camel-cxf:serviceBeans>
+            <bean class="com.camel.app.webservice.customer.CustomerOrderService"/>
+        </camel-cxf:serviceBeans>
+        <camel-cxf:providers>
+            <bean class="com.fasterxml.jackson.jaxrs.json.JacksonJsonProvider"/>
+        </camel-cxf:providers>
+    </camel-cxf:rsServer>
 
 
     <bean id="helloService" class="com.camel.app.webservice.helloworld.HelloWorldService"/>
 
     <bean id="restServiceRouteBuilder" class="com.camel.app.webservice.helloworld.RestServiceRouteBuilder">
         <property name="restEndpoint" value="${restEndpoint}"/>
+    </bean>
+
+    <!-- customer-->
+    <bean id="customerOrderService" class="com.camel.app.webservice.customer.CustomerOrderService"/>
+
+    <bean id="customerOrderRouteBuilder" class="com.camel.app.webservice.customer.CustomerOrderRouteBuilder">
+        <property name="customerOrderRestEndpoint" value="${customerOrderRestEndpoint}"/>
     </bean>
 
 </blueprint>
