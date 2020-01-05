@@ -21,7 +21,7 @@
         <maven-resources-plugin-version>2.6</maven-resources-plugin-version>
         <maven.compiler.target>1.8</maven.compiler.target>
         <maven.compiler.source>1.8</maven.compiler.source>
-        <camel-version>2.15.0</camel-version>
+        <camel-version>3.0.0</camel-version>
         <cxf-version>3.0.4</cxf-version>
     </properties>
 
